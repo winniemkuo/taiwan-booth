@@ -13,6 +13,10 @@ async function handlePhotoUpload() {
   try {
     if (!selectedTemplate) {
       alert("Please select a template before uploading a photo.");
+      document.getElementById('templateSelector').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
       return;
     }
 
@@ -234,6 +238,12 @@ async function handlePhotoUpload() {
     ctx.fillStyle = "#FFFFFF";
     ctx.fillText(captionText, canvas.width / 2, canvas.height - 40);
 
+    // After successful face detection and processing
+    document.querySelector('.preview-section').scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+
   } catch (error) {
     console.error('Error processing photo:', error);
     alert('Error processing photo. Please check the console for details.');
@@ -267,25 +277,29 @@ async function loadTemplates() {
 
   templateData.forEach((template) => {
     const tile = document.createElement('div');
-    tile.style.border = '3px solid transparent';
+    tile.style.border = '2px solid transparent';
     tile.style.cursor = 'pointer';
-    tile.style.margin = '10px';
+    tile.style.margin = '1px';
     tile.style.textAlign = 'center';
+    tile.style.width = '100px';
 
     const img = document.createElement('img');
     img.src = template.thumbnail;
     img.alt = template.label;
-    img.style.width = '200px';
-    img.style.height = '200px';
+    img.style.width = '100%';
+    img.style.height = '100px';
     img.style.objectFit = 'cover';
-    img.style.borderRadius = '8px';
-    img.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+    img.style.borderRadius = '6px';
+    img.style.boxShadow = '0 1px 2px rgba(0,0,0,0.1)';
 
     const label = document.createElement('div');
     label.innerText = template.label;
     label.style.textAlign = 'center';
-    label.style.marginTop = '8px';
-    label.style.fontWeight = 'bold';
+    label.style.marginTop = '2px';
+    label.style.marginBottom = '2px';
+    label.style.fontSize = '11px';
+    label.style.fontWeight = '500';
+    label.style.color = '#444';
 
     tile.appendChild(img);
     tile.appendChild(label);
@@ -294,8 +308,14 @@ async function loadTemplates() {
       selectedTemplate = template;
       clearCanvasAndPreview();
       document.getElementById("photoInput").value = "";
-      [...container.children].forEach(c => c.style.border = '3px solid transparent');
-      tile.style.border = '3px solid #4CAF50';
+      [...container.children].forEach(c => c.style.border = '2px solid transparent');
+      tile.style.border = '2px solid #4CAF50';
+      
+      // Scroll to the input section after template selection
+      document.querySelector('.input-group').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
     };
 
     container.appendChild(tile);
@@ -321,11 +341,11 @@ function refreshTextOnly() {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
     // Draw text again
-    ctx.font = "28px sans-serif";
-    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 28px sans-serif";
+    ctx.fillStyle = "#FFFFFF";
     ctx.textAlign = "center";
-    ctx.shadowColor = "rgba(0, 0, 0, 0.7)";
-    ctx.shadowBlur = 4;
+    ctx.shadowColor = "rgba(0, 0, 0, 0.3)";
+    ctx.shadowBlur = 2;
 
     const title = document.getElementById("eventTitle").value;
     ctx.fillText(title, canvas.width / 2, 40);
@@ -333,6 +353,12 @@ function refreshTextOnly() {
     const caption = document.getElementById("bottomText").value;
     ctx.font = "20px sans-serif";
     ctx.fillText(caption, canvas.width / 2, canvas.height - 40);
+
+    // Scroll to preview after text changes
+    document.querySelector('.preview-section').scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
   };
 
   // Get current canvas image as source
@@ -341,7 +367,20 @@ function refreshTextOnly() {
 
 document.getElementById("photoInput").addEventListener("change", handlePhotoUpload);
 document.getElementById("finalCanvas").scrollIntoView({ behavior: "smooth" });
-document.getElementById("eventTitle").addEventListener("input", refreshTextOnly);
-document.getElementById("bottomText").addEventListener("input", refreshTextOnly);
+document.getElementById("eventTitle").addEventListener("input", debounce(refreshTextOnly, 500));
+document.getElementById("bottomText").addEventListener("input", debounce(refreshTextOnly, 500));
 loadModels();
 loadTemplates();
+
+// Debounce function to prevent too frequent scrolling
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};

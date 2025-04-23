@@ -9,7 +9,7 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding: 2rem;
+      padding: 1rem;
       margin: 0;
       max-width: 800px;
       margin: auto;
@@ -35,9 +35,51 @@
     #templateSelector {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 2px;
       justify-content: center;
       margin-bottom: 2rem;
+      padding: 0 4px;
+    }
+
+    #templateSelector img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .instructions {
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    .instructions h3 {
+      color: #333;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .instructions ol {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: #555;
+    }
+
+    .instructions li {
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      color: #333;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      font-weight: 600;
     }
 
     #facePreviewContainer {
@@ -114,7 +156,19 @@
   </style>
 </head>
 <body>
-  <h2>Photo Booth</h2>
+  <h2>Taiwan Photo Booth</h2>
+
+  <div class="instructions">
+    <h3>How to use:</h3>
+    <ol>
+      <li>Pick a template below</li>
+      <li>Enter your event title and caption</li>
+      <li>Upload a photo with face(s)</li>
+      <li>Download your creation!</li>
+    </ol>
+  </div>
+
+  <div class="section-title">Pick a Template</div>
   <div id="templateSelector"></div>
 
   <div class="input-group">
