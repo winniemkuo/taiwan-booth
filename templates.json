@@ -1,0 +1,96 @@
+[
+  {
+    "id": "boba",
+    "label": "Bubble Tea",
+    "thumbnail": "images/boba.png",
+    "background": "images/boba.png",
+    "overlay": null,
+    "slots": [
+      { "x": 196, "y": 312, "width": 145, "height": 145 }
+    ]
+  },
+  {
+    "id": "taiwan_opera",
+    "label": "Taiwan Opera",
+    "thumbnail": "images/taiwan_opera.png",
+    "background": "images/taiwan_opera.png",
+    "overlay": null,
+    "slots": [
+      { "x": 171, "y": 208, "width": 170, "height": 173 }
+    ]
+  },
+  {
+    "id": "taipei101",
+    "label": "Taipei 101",
+    "thumbnail": "images/taipei101.png",
+    "background": "images/taipei101.png",
+    "overlay": null,
+    "slots": [
+      { "x": 164, "y": 348, "width": 114, "height": 93 },
+      { "x": 372, "y": 361, "width": 114, "height": 93 }
+    ]
+  },
+  {
+    "id": "jiufen",
+    "label": "Jiufen Old Street",
+    "thumbnail": "images/jiufen.png",
+    "background": "images/jiufen.png",
+    "overlay": null,
+    "slots": [
+      { "x": 150, "y": 380, "width": 104, "height": 87 },
+      { "x": 346, "y": 383, "width": 104, "height": 87 }
+    ]
+  },
+  {
+    "id": "dragonboat",
+    "label": "Dragon Boat Festival",
+    "thumbnail": "images/dragonboat.png",
+    "background": "images/dragonboat.png",
+    "overlay": null,
+    "slots": [
+      { "x": 541, "y": 369, "width": 120, "height": 130 }
+    ]
+  },
+  {
+    "id": "alishan",
+    "label": "Alishan",
+    "thumbnail": "images/alishan.png",
+    "background": "images/alishan.png",
+    "overlay": null,
+    "slots": [
+      { "x": 94, "y": 293, "width": 146, "height": 121 },
+      { "x": 362, "y": 353, "width": 128, "height": 102 }
+    ]
+  },
+  {
+    "id": "aboriginal_boy",
+    "label": "Aboriginal Boy",
+    "thumbnail": "images/aboriginal_boy.png",
+    "background": "images/aboriginal_boy.png",
+    "overlay": null,
+    "slots": [
+      { "x": 181, "y": 128, "width": 167, "height": 155 }
+    ]
+  },
+  {
+    "id": "aboriginal_girl",
+    "label": "Aboriginal Girl",
+    "thumbnail": "images/aboriginal_girl.png",
+    "background": "images/aboriginal_girl.png",
+    "overlay": null,
+    "slots": [
+      { "x": 178, "y": 172, "width": 180, "height": 170 }
+    ]
+  },
+  {
+    "id": "tea_farmer",
+    "label": "Tea Farmer",
+    "thumbnail": "images/tea_farmer.png",
+    "background": "images/tea_farmer.png",
+    "overlay": null,
+    "slots": [
+      { "x": 331, "y": 147, "width": 160, "height": 190}
+    ]
+  }
+]
+  
