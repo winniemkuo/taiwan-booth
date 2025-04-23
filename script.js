@@ -93,13 +93,17 @@ async function handlePhotoUpload() {
       const { x, y, width, height } = det.box;
       
       // Expand the crop area around the face
-      const expandX = width * 0.1; 
-      const expandY = height * 0.2;
+      const expandX = width * 0.05;
+      const expandY = height * 0.15;
+      
+      // Adjust vertical offset to include more chin and less forehead (15% top, 85% bottom)
+      const topOffset = expandY * 0.15;
+      const bottomOffset = expandY * 0.85;
       
       const cropX = Math.max(0, x - expandX);
-      const cropY = Math.max(0, y - expandY);
+      const cropY = Math.max(0, y - topOffset);
       const cropWidth = Math.min(img.width - cropX, width + (expandX * 2));
-      const cropHeight = Math.min(img.height - cropY, height + (expandY * 2));
+      const cropHeight = Math.min(img.height - cropY, height + topOffset + bottomOffset);
       
       // Use expanded crop area
       const crop = cropImage(img, cropX, cropY, cropWidth, cropHeight);
@@ -203,6 +207,7 @@ async function handlePhotoUpload() {
       previewCtx.drawImage(crop, previewDrawX, previewDrawY, previewDrawWidth, previewDrawHeight);
       previewCtx.restore();
       
+      // Add preview to container
       document.getElementById('facePreviewContainer').appendChild(previewCanvas);
     });
 
